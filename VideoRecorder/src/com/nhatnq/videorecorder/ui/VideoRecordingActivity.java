@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -26,7 +25,6 @@ import com.nhatnq.videorecorder.core.BaseRecorder.OnRecordingListener;
 import com.nhatnq.videorecorder.core.DefaultVideoRecorder;
 
 public class VideoRecordingActivity extends Activity implements SurfaceHolder.Callback{
-	private String TAG = VideoRecordingActivity.class.getCanonicalName();
 	private SurfaceView mSurfaceView;
 	private SurfaceHolder mSurfaceHolder;
 	private CameraWrapper mCameraPair;
@@ -70,7 +68,6 @@ public class VideoRecordingActivity extends Activity implements SurfaceHolder.Ca
 	
 	private void initRecorder(){
 		if(mRecorder != null){
-			Log.e(TAG, "@Release recorder first.");
 			mRecorder.release();
 		}
 		mRecorder = new DefaultVideoRecorder();
@@ -204,7 +201,6 @@ public class VideoRecordingActivity extends Activity implements SurfaceHolder.Ca
 		int toggleCamId = (camId == CameraInfo.CAMERA_FACING_BACK ? 
 				CameraInfo.CAMERA_FACING_FRONT : CameraInfo.CAMERA_FACING_BACK);
 		if(! getCameraObject(false, toggleCamId)){
-			Log.e("SCREEN", "Failed to get object");
 			return;
 		}
 		
@@ -237,7 +233,7 @@ public class VideoRecordingActivity extends Activity implements SurfaceHolder.Ca
 	};
 	
 	@Override
-	protected void onRestart() {Log.e(TAG, "@On RESTART");
+	protected void onRestart() {
 		super.onRestart();
 		int cameraId;
 		if(mCameraPair != null){
@@ -273,7 +269,7 @@ public class VideoRecordingActivity extends Activity implements SurfaceHolder.Ca
 	
 	private static String recordedVideoPath;
 	
-	protected void onPause() {Log.e(TAG, "@On PAUSE");
+	protected void onPause() {
 		if(mRecorder.isRecording()){
 			recordedVideoPath = mRecorder.getOutputFile().getAbsolutePath();
 			mRecorder.stopRecording(true);
@@ -284,7 +280,7 @@ public class VideoRecordingActivity extends Activity implements SurfaceHolder.Ca
 		super.onPause();
 	};
 	
-	protected void onStop() {Log.e(TAG, "@On STOP");
+	protected void onStop() {
 		if(mCameraPair != null){
 			mCameraPair.getCamera().lock();
 			mCameraPair.release();

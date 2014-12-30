@@ -1,6 +1,5 @@
 package com.nhatnq.videorecorder;
 
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -11,16 +10,6 @@ public class Util {
 	public static String genFileName(){
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd_hhmmss");
 		return format.format(new Date()).toString();
-	}
-	
-	public static String getReadableFileSize(long size){
-		DecimalFormat format = new DecimalFormat("###.##");
-		if(size > 1024 * 1024){
-			return format.format(size / (1024f * 1024f)) + " MB";
-		}else if(size > 1024){
-			return format.format(size / 1024f) + " KB";
-		}else if(size > 1) return size + " Byte";
-		else return "1 Byte";
 	}
 	
 	public static String formatDuration(long seconds) {

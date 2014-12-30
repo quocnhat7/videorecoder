@@ -19,7 +19,6 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Video.Thumbnails;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -66,9 +65,6 @@ public class VideoPreviewActivity extends Activity {
 		vvVideo.setOnPreparedListener(new OnPreparedListener() {
 			@Override
 			public void onPrepared(MediaPlayer arg0) {
-				Log.e("VIDEO", "@Video prepared, w = "+arg0.getVideoWidth()+", h="+arg0.getVideoHeight());
-				Log.e("VIDEO", "@Video view: w = "+vvVideo.getWidth()+", h = "+vvVideo.getHeight());
-				
 				File file = new File(mVideoPath);
 				tvSize.setText(Util.getFileSize(getBaseContext(), file.length()));
 				

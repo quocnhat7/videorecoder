@@ -97,7 +97,6 @@ public class DefaultVideoRecorder extends BaseRecorder{
 				
 				@Override
 				public void onError(MediaRecorder mr, int what, int extra) {
-					Log.e(TAG, "#Received error > "+what+", extra = "+extra);
 					mRecordingListener.onError(""+extra);
 					if(extra == -1007){
 						prepare();
@@ -108,11 +107,9 @@ public class DefaultVideoRecorder extends BaseRecorder{
 		}
 		recorder.reset();
 		
-		Log.e(TAG, "#PREPARE with "+mCameraPair.getCameraInfo().facing);
 		Camera mCamera = mCameraPair.getCamera();
 		mCamera.unlock();
 		recorder.setCamera(mCamera);
-//		mCamera.lock();
 		
 		recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
 		recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
@@ -134,16 +131,11 @@ public class DefaultVideoRecorder extends BaseRecorder{
 //				profile = CamcorderProfile.get(camId, CamcorderProfile.QUALITY_480P);
 //			}
 //		}
-//		if(profile == null){
-			profile = CamcorderProfile.get(camId, CamcorderProfile.QUALITY_HIGH);
-//		}
+		
+		profile = CamcorderProfile.get(camId, CamcorderProfile.QUALITY_HIGH);
 		if(profile != null){
-			/* Profile quality
-			 * 1080p=6, 720p=5, 480p=4, CIF(352x288)=3, QCIF(176x144)=2, QVGA(320x240)=7
-			 * HIGH = 1, LOW = 0
-			 */
-//			profile.fileFormat = MediaRecorder.OutputFormat.MPEG_4;
-//			profile.videoCodec = MediaRecorder.VideoEncoder.MPEG_4_SP;
+			profile.fileFormat = MediaRecorder.OutputFormat.MPEG_4;
+			profile.videoCodec = MediaRecorder.VideoEncoder.MPEG_4_SP;
 //			profile.videoBitRate = 500000;
 //			profile.videoFrameRate = 30000;
 			if(sVideoSize != null){
@@ -156,8 +148,8 @@ public class DefaultVideoRecorder extends BaseRecorder{
 //			profile.audioSampleRate = AudioTrack.getNativeOutputSampleRate(AudioManager.STREAM_MUSIC);
 			recorder.setProfile(profile);
 
-			Log.e(TAG, "@@RECORDER profile: quality="+profile.quality+", vfw = "+profile.videoFrameWidth+", vfh = "+profile.videoFrameHeight);
-			Log.e(TAG, "@@RECORDER profile audio: brate="+profile.audioBitRate+", chanel="+profile.audioChannels
+			Log.i(TAG, "RECORDER profile: quality="+profile.quality+", vfw = "+profile.videoFrameWidth+", vfh = "+profile.videoFrameHeight);
+			Log.i(TAG, "RECORDER profile audio: brate="+profile.audioBitRate+", chanel="+profile.audioChannels
 					+", codec="+profile.audioCodec+", srate= "+profile.audioSampleRate); 
 		}else{
 			//http://developer.android.com/guide/appendix/media-formats.html
@@ -245,7 +237,6 @@ public class DefaultVideoRecorder extends BaseRecorder{
 	
 	@Override
 	public void release(){
-		Log.e(TAG, " release, is recording ? "+isRecording);
 		if(recorder != null){
 			recorder.release();
 			recorder = null;
