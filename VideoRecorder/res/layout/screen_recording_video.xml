@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <SurfaceView
+        android:id="@+id/surface_camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <ImageView
+        android:id="@+id/bt_start_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:padding="2dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/video_record"
+        android:background="@drawable/bg_video_recorder_action"
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/switch_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/surface_camera"
+        android:layout_alignTop="@id/surface_camera"
+        android:layout_margin="10dp"
+        android:src="@drawable/videocall_switch_camera" />
+    <ImageView
+        android:id="@+id/flash_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/surface_camera"
+        android:layout_below="@id/switch_camera"
+        android:layout_margin="10dp" android:visibility="invisible"
+        android:src="@drawable/videocall_switch_camera" />
+    
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:gravity="center"
+        android:layout_alignLeft="@id/surface_camera"
+        android:layout_alignTop="@id/surface_camera"
+        android:layout_margin="10dp"
+        android:textColor="#ff0000"
+        android:textSize="20sp"
+        android:visibility="invisible" />
+
+</RelativeLayout>

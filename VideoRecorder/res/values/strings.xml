@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Video Recorder</string>
+    <string name="action_settings">Settings</string>
+    <string name="string_send">Send</string>
+    <string name="not_support_camera">Camera service not available</string>
+    <string name="stop_err">Can not get recorded video, please try again</string>
+    <string name="confirm">Confirm</string>
+    <string name="string_yes_dialog">Yes</string>
+    <string name="string_no_dialog">No</string>
+    <string name="string_cancel">Cancel</string>
+    <string name="recording_cancel_warning">This will discard your video, do you really want to do?</string>
+    <string name="stop_recording_video_err">Prolem when saving video data, please try again</string>
+    <string name="x_mbs">%1$sMB</string>
+    <string name="x_kbs">%1$sKB</string>
+
+</resources>
